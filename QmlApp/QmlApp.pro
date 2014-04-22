@@ -2,7 +2,8 @@
 QML_IMPORT_PATH =
 
 # The .cpp file which was generated for your project. Feel free to hack it.
-SOURCES += main.cpp
+SOURCES += main.cpp \
+    flowcontrol.cpp
 
 RESOURCES += qml.qrc
 
@@ -18,3 +19,6 @@ include(deployment.pri)
 OTHER_FILES += \
     readme.txt \
     Qt Application Spec_1.pdf
+
+HEADERS += \
+    flowcontrol.h
