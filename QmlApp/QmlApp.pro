@@ -16,4 +16,5 @@ include(qtquick1applicationviewer/qtquick1applicationviewer.pri)
 include(deployment.pri)
 
 OTHER_FILES += \
-    readme.txt
+    readme.txt \
+    Qt Application Spec_1.pdf
