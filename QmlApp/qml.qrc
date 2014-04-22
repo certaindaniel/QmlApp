@@ -2,5 +2,8 @@
     <qresource prefix="/">
         <file>main.qml</file>
         <file>Button.qml</file>
+        <file>add.qml</file>
+        <file>delete.qml</file>
+        <file>view.qml</file>
     </qresource>
 </RCC>
