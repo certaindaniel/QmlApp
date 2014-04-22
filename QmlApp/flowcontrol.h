@@ -1,15 +1,18 @@
 #ifndef FLOWCONTROL_H
 #define FLOWCONTROL_H
 #include <QDebug>
+#include <QDeclarativeContext>
 #include <QDeclarativeView>
 #include <QObject>
+#include "qtquick1applicationviewer.h"
+#include "databasemanager.h"
 
 class FlowControl : public QObject
 {
     Q_OBJECT
 public:
     explicit FlowControl(QObject *parent = 0);
-
+    DatabaseManager databaseManager;
 signals:
 
 public slots:

@@ -1,3 +1,4 @@
+#include "databasemanager.h"
 #include "flowcontrol.h"
 #include "qtquick1applicationviewer.h"
 #include <QApplication>
@@ -6,7 +7,6 @@
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
-
     FlowControl flowControl;
 
     QtQuick1ApplicationViewer viewer;
@@ -15,6 +15,5 @@ int main(int argc, char *argv[])
     viewer.setMainQmlFile(QLatin1String("qrc:///main.qml"));
     viewer.rootContext()->setContextProperty("FlowControl", &flowControl);
     viewer.showExpanded();
-
     return app.exec();
 }

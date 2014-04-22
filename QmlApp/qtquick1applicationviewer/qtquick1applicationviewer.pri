@@ -6,6 +6,7 @@
 # may offer an updated version of it.
 
 QT += declarative
+QT += sql
 
 SOURCES += $$PWD/qtquick1applicationviewer.cpp
 HEADERS += $$PWD/qtquick1applicationviewer.h

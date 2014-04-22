@@ -3,7 +3,8 @@ QML_IMPORT_PATH =
 
 # The .cpp file which was generated for your project. Feel free to hack it.
 SOURCES += main.cpp \
-    flowcontrol.cpp
+    flowcontrol.cpp \
+    databasemanager.cpp
 
 RESOURCES += qml.qrc
 
@@ -21,4 +22,5 @@ OTHER_FILES += \
     Qt Application Spec_1.pdf
 
 HEADERS += \
-    flowcontrol.h
+    flowcontrol.h \
+    databasemanager.h
