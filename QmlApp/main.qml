@@ -1,7 +1,7 @@
 import QtQuick 1.1
 
 Rectangle {
-    id: rectangle1
+    id: rectangleMain
     width: 360
     height: 360
 
