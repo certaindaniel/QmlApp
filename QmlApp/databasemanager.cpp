@@ -47,7 +47,9 @@ void DatabaseManager::addUserData(QString name,QString age,QString birthday)
         {
             qDebug( "Inserted!" );
         }
+        qry.finish();
     }
+    db.close();
 }
 QStringList DatabaseManager::dataModel()
 {
@@ -96,6 +98,68 @@ QStringList DatabaseManager::dataModel()
                 list.append(qry.value(0).toString());
             }
         }
+        qry.finish();
     }
+    db.close();
+
     return list;
+}
+
+void DatabaseManager::findUserData(QString name)
+{
+    QString age;
+    QString birthday;
+
+    QSqlDatabase db = QSqlDatabase::addDatabase( "QSQLITE" );
+    db.setDatabaseName( "userinfo.db" );
+
+    if( !db.open() )
+    {
+        qDebug() << db.lastError();
+        qFatal( "Failed to connect." );
+    }
+    else
+    {
+        qDebug( "Connected!" );
+        QString queryString = "SELECT * FROM userinfo where name = '" + name + "'";
+        QSqlQuery qry;
+        qry.prepare( queryString );
+        if( !qry.exec() )
+        {
+            qDebug() << qry.lastError();
+        }
+        else
+        {
+            qDebug( "Selected!" );
+            QSqlRecord rec = qry.record();
+            int cols = rec.count();
+
+            for( int r=0; qry.next(); r++ )
+            {
+                for( int c=0; c<cols; c++ )
+                {
+                    qDebug() << QString( "Row %1, %2: %3" ).arg( r ).arg( rec.fieldName(c) ).arg( qry.value(c).toString() );
+                }
+                age = qry.value(1).toString();
+                birthday = qry.value(2).toString();
+            }
+        }
+        qry.finish();
+    }
+    db.close();
+
+    qDebug() << "loadAddPage";
+    qDebug() << name << age << birthday;
+
+    QDeclarativeView *qmlView = new QDeclarativeView;
+    // To stop this warning from printing every time,
+    // you must set the context properties before loading the source file of your QML
+    // (ie. Move the setContextProperty methods before setMainQmlFile method).
+    qmlView->rootContext()->setContextProperty("DatabaseManager", this);
+    qmlView->rootContext()->setContextProperty("showName", name);
+    qmlView->rootContext()->setContextProperty("showAge", age);
+    qmlView->rootContext()->setContextProperty("showBirthday", birthday);
+    qmlView->setSource(QUrl(QLatin1String("qrc:///add.qml")));
+    qmlView->show();
+
 }

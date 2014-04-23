@@ -4,6 +4,8 @@
 #include <QObject>
 #include <QDebug>
 #include <QtSql>
+#include <QDeclarativeContext>
+#include <QDeclarativeView>
 
 class DatabaseManager : public QObject
 {
@@ -15,6 +17,7 @@ signals:
 
 public slots:
     void addUserData(QString name, QString age, QString birthday);
+    void findUserData(QString name);
 };
 
 #endif // DATABASEMANAGER_H

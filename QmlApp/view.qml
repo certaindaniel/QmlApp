@@ -22,7 +22,8 @@ Rectangle {
                     height: 32
                     text: modelData
                     onClicked : {
-                        console.log("name");
+                        console.log("connect to add page");
+                        DatabaseManager.findUserData(modelData);
                     }
                 }
 
@@ -31,7 +32,7 @@ Rectangle {
                     height: 32
                     text: "Delete ?"
                     onClicked : {
-                        console.log("Delete ?");
+                        console.log("connect to delete page ?");
                     }
                 }
             }
