@@ -6,6 +6,7 @@
 #include <QObject>
 #include "qtquick1applicationviewer.h"
 #include "databasemanager.h"
+#include <QList>
 
 class FlowControl : public QObject
 {
@@ -19,6 +20,7 @@ public slots:
     void loadAddPage(QString name,QString age,QString birthday);
     void loadDeletePage(QString name);
     void loadViewPage();
+
 };
 
 #endif // FLOWCONTROL_H

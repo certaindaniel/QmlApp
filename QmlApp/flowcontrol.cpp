@@ -23,7 +23,6 @@ void FlowControl::loadDeletePage(QString name)
     QDeclarativeView *qmlView = new QDeclarativeView;
     qmlView->setSource(QUrl(QLatin1String("qrc:///delete.qml")));
     qmlView->show();
-
 }
 
 void FlowControl::loadViewPage()
@@ -31,5 +30,6 @@ void FlowControl::loadViewPage()
     qDebug() << "loadViewPage";
     QDeclarativeView *qmlView = new QDeclarativeView;
     qmlView->setSource(QUrl(QLatin1String("qrc:///view.qml")));
+    qmlView->rootContext()->setContextProperty("DatabaseManager", &databaseManager);
     qmlView->show();
 }

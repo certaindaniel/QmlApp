@@ -10,7 +10,7 @@ class DatabaseManager : public QObject
     Q_OBJECT
 public:
     explicit DatabaseManager(QObject *parent = 0);
-
+    Q_INVOKABLE QStringList dataModel();
 signals:
 
 public slots:
