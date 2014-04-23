@@ -2,6 +2,7 @@
 #define FLOWCONTROL_H
 #include <QDebug>
 #include <QDeclarativeContext>
+#include <QDeclarativeEngine>
 #include <QDeclarativeView>
 #include <QObject>
 #include "qtquick1applicationviewer.h"
@@ -16,7 +17,6 @@ public:
     explicit FlowControl(QObject *parent = 0);
     DatabaseManager databaseManager;
 signals:
-
 public slots:
     void loadAddPage(QString name,QString age,QString birthday);
     void loadDeletePage(QString name);

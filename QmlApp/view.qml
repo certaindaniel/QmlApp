@@ -5,6 +5,7 @@ Rectangle {
     height: 360
     color: "white"
 
+
     Component {
         id: appDelegate
 
@@ -24,6 +25,7 @@ Rectangle {
                     onClicked : {
                         console.log("connect to add page");
                         DatabaseManager.findUserData(modelData);
+                        Qt.quit()
                     }
                 }
 
@@ -33,11 +35,17 @@ Rectangle {
                     text: "Delete ?"
                     onClicked : {
                         console.log("connect to delete page ?");
+                        console.log(modelData);
+                        FlowControl.loadDeletePage(modelData);
+                        Qt.quit()
                     }
                 }
             }
         }
     }
+
+
+
 
     Component {
         id: appHighlight
@@ -51,5 +59,21 @@ Rectangle {
         focus: true
         model: DatabaseManager.dataModel()
         delegate: appDelegate
+
+
     }
+
+    Button {
+        width: 64
+        height: 32
+        text: "Back"
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: 0
+        border.color: "#ffbc57"
+        onClicked : {
+            console.log("Back");
+            Qt.quit()
+        }
+    }
+
 }

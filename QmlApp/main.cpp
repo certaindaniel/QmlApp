@@ -7,13 +7,14 @@
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
-    FlowControl flowControl;
+
 
     QtQuick1ApplicationViewer viewer;
     viewer.addImportPath(QLatin1String("modules"));
     viewer.setOrientation(QtQuick1ApplicationViewer::ScreenOrientationAuto);
-    viewer.setMainQmlFile(QLatin1String("qrc:///main.qml"));
+    FlowControl flowControl;
     viewer.rootContext()->setContextProperty("FlowControl", &flowControl);
+    viewer.setMainQmlFile(QLatin1String("qrc:///main.qml"));
     viewer.showExpanded();
     return app.exec();
 }

@@ -113,12 +113,11 @@ Rectangle {
             height: 64
             onClicked: {
                 console.log("Save Data");
-                // Save to SQLite >>> Start
                 console.log(textEditName.text);
                 console.log(textEditAge.text);
                 console.log(textEditBirthday.text);
                 DatabaseManager.addUserData(textEditName.text,textEditAge.text,textEditBirthday.text);
-                // Save to SQLite <<< End
+                Qt.quit();
             }
         }
     }

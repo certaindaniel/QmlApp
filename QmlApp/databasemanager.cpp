@@ -160,6 +160,35 @@ void DatabaseManager::findUserData(QString name)
     qmlView->rootContext()->setContextProperty("showAge", age);
     qmlView->rootContext()->setContextProperty("showBirthday", birthday);
     qmlView->setSource(QUrl(QLatin1String("qrc:///add.qml")));
+    qmlView->connect(qmlView->engine(), SIGNAL(quit()), SLOT(close()));
     qmlView->show();
+}
 
+void DatabaseManager::deleteUserData(QString name)
+{
+    QSqlDatabase db = QSqlDatabase::addDatabase( "QSQLITE" );
+    db.setDatabaseName( "userinfo.db" );
+
+    if( !db.open() )
+    {
+        qDebug() << db.lastError();
+        qFatal( "Failed to connect." );
+    }
+    else
+    {
+        qDebug( "Connected!" );
+        QString queryString = "delete FROM userinfo where name = '" + name + "'";
+        QSqlQuery qry;
+        qry.prepare( queryString );
+        if( !qry.exec() )
+        {
+            qDebug() << qry.lastError();
+        }
+        else
+        {
+            qDebug( "Deleted!" );
+        }
+        qry.finish();
+    }
+    db.close();
 }

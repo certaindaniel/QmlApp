@@ -46,7 +46,7 @@ Rectangle {
             x: 90
             y: 144
             color: "#be0e0e"
-            text: qsTr("name")
+            text: showName
             font.pixelSize: 12
         }
 
@@ -63,27 +63,32 @@ Rectangle {
         spacing: 10
 
         Button {
-            id : yesButton
-            text : "Yes"
-            border.color: "#ffbb55"
-            width: 96
-            height: 64
-            onClicked: {
-                console.log("Add New Data");
-                FlowControl.loadAddPage("","","");
-            }
-        }
-
-        Button {
             id : noButton
             text : "No"
             border.color: "#ffbc57"
             width: 96
             height: 64
             onClicked: {
-                console.log("View Data");
+                console.log("No");
                 FlowControl.loadViewPage();
+                Qt.quit()
             }
         }
+
+        Button {
+            id : yesButton
+            text : "Yes"
+            border.color: "#ffbb55"
+            width: 96
+            height: 64
+            onClicked: {
+                console.log("Yes");
+                DatabaseManager.deleteUserData(textName.text)
+                FlowControl.loadViewPage();
+                Qt.quit()
+            }
+        }
+
+
     }
 }
