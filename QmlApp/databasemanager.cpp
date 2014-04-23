@@ -13,7 +13,17 @@ void DatabaseManager::addUserData(QString name,QString age,QString birthday)
     qDebug() << name << age << birthday;
 
     QSqlDatabase db = QSqlDatabase::addDatabase( "QSQLITE" );
+
+    #ifdef Q_OS_LINUX
+    // NOTE: We have to store database file into user home folder in Linux
+    QString path(QDir::home().path());
+    path.append(QDir::separator()).append("userinfo.db");
+    path = QDir::toNativeSeparators(path);
+    db.setDatabaseName(path);
+    #else
+    // NOTE: File exists in the application private folder, in Symbian Qt implementation
     db.setDatabaseName( "userinfo.db" );
+    #endif
 
     if( !db.open() )
     {
@@ -56,7 +66,17 @@ QStringList DatabaseManager::dataModel()
     QStringList list;
 
     QSqlDatabase db = QSqlDatabase::addDatabase( "QSQLITE" );
+
+    #ifdef Q_OS_LINUX
+    // NOTE: We have to store database file into user home folder in Linux
+    QString path(QDir::home().path());
+    path.append(QDir::separator()).append("userinfo.db");
+    path = QDir::toNativeSeparators(path);
+    db.setDatabaseName(path);
+    #else
+    // NOTE: File exists in the application private folder, in Symbian Qt implementation
     db.setDatabaseName( "userinfo.db" );
+    #endif
 
     if( !db.open() )
     {
@@ -111,7 +131,17 @@ void DatabaseManager::findUserData(QString name)
     QString birthday;
 
     QSqlDatabase db = QSqlDatabase::addDatabase( "QSQLITE" );
+
+    #ifdef Q_OS_LINUX
+    // NOTE: We have to store database file into user home folder in Linux
+    QString path(QDir::home().path());
+    path.append(QDir::separator()).append("userinfo.db");
+    path = QDir::toNativeSeparators(path);
+    db.setDatabaseName(path);
+    #else
+    // NOTE: File exists in the application private folder, in Symbian Qt implementation
     db.setDatabaseName( "userinfo.db" );
+    #endif
 
     if( !db.open() )
     {
@@ -167,7 +197,17 @@ void DatabaseManager::findUserData(QString name)
 void DatabaseManager::deleteUserData(QString name)
 {
     QSqlDatabase db = QSqlDatabase::addDatabase( "QSQLITE" );
+
+    #ifdef Q_OS_LINUX
+    // NOTE: We have to store database file into user home folder in Linux
+    QString path(QDir::home().path());
+    path.append(QDir::separator()).append("userinfo.db");
+    path = QDir::toNativeSeparators(path);
+    db.setDatabaseName(path);
+    #else
+    // NOTE: File exists in the application private folder, in Symbian Qt implementation
     db.setDatabaseName( "userinfo.db" );
+    #endif
 
     if( !db.open() )
     {
