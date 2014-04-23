@@ -39,7 +39,7 @@ Rectangle {
                     color: "#141414"
                     selectionColor: "green"
                     font.pixelSize: 12
-                    text: qsTr("")
+                    text: showName
                 }
             }
         }
@@ -68,7 +68,7 @@ Rectangle {
                     id: textEditAge
                     width: 80
                     height: 20
-                    text: qsTr("")
+                    text: showAge
                     font.pixelSize: 12
                 }
             }
@@ -97,7 +97,7 @@ Rectangle {
                         id: textEditBirthday
                         width: 80
                         height: 20
-                        text: qsTr("")
+                        text: showBirthday
                         font.pixelSize: 12
                 }
             }
@@ -119,7 +119,6 @@ Rectangle {
                 console.log(textEditBirthday.text);
                 DatabaseManager.addUserData(textEditName.text,textEditAge.text,textEditBirthday.text);
                 // Save to SQLite <<< End
-
             }
         }
     }

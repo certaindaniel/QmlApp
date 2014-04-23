@@ -8,6 +8,7 @@
 #include "databasemanager.h"
 #include <QList>
 
+
 class FlowControl : public QObject
 {
     Q_OBJECT
@@ -21,6 +22,7 @@ public slots:
     void loadDeletePage(QString name);
     void loadViewPage();
 
+private:
 };
 
 #endif // FLOWCONTROL_H

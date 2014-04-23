@@ -99,4 +99,3 @@ QStringList DatabaseManager::dataModel()
     }
     return list;
 }
-

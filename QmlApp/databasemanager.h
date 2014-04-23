@@ -15,7 +15,6 @@ signals:
 
 public slots:
     void addUserData(QString name, QString age, QString birthday);
-
 };
 
 #endif // DATABASEMANAGER_H

@@ -20,7 +20,7 @@ Rectangle {
             height: 64
             onClicked: {
                 console.log("Add New Data");
-                FlowControl.loadAddPage("name","age","birthday");
+                FlowControl.loadAddPage("","","");
             }
         }
 
